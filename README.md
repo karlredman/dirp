@@ -39,13 +39,14 @@ mkdir -p $HOME/dirlists"
 source file_path/dirp.bash
 ```
 
-4. (optionally) Add the following to the very end of your `.bashrc` file for automatic project loading (see use cases below).
+4. (optionally) Change configurables as needed/desired (see 'Configuration' below)
+
+5. (optionally) Add the following to the very end of your `.bashrc` file for automatic project loading (see use cases below).
 ```
 ## set dirs to recent project -this is optional but recommended and fun
 dirp_auto
 ```
 
-5. (optionally) Change configurables as needed/desired (see 'Configuration' below)
 6. Profit.
 
 ## Configuration:
@@ -275,7 +276,7 @@ karl@karl-samsung ~ $
 
 ### Copying or Moving Files with less work
 * You can copy and move files around with less work via command line by having directory stacks in place.
-* Example: copy files between to long directory paths using the `~` operator.
+* Example: copy files between two long directory paths using the `~` operator.
 ```
 karl@karl-samsung ~ $ d
 timetrap_tui:
