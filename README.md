@@ -8,7 +8,7 @@ dirp is a bash script meant to be sourced in your .bashrc file to help manage th
 
 ## Features:
 * List and select directories managed by `dirs` in alternating colors
-* Fancy CLI Menu driven interface (via bash select)
+* CLI Menu driven interface (via bash select)
 * Easily switch between directory groups (i.e. projects)
 * Automatically sorts directory listings
     * version sensitive
@@ -18,15 +18,15 @@ dirp is a bash script meant to be sourced in your .bashrc file to help manage th
 * Colors and application behavior managed by environment variables (if desired)
 * New logins automatically load the latest project directories (once setup)
 
-## Cool Screenshots!
-* TODO: coming soon!
+## Screenshots
+![Latest Screenshot](https://github.com/karlredman/dirp/blob/master/docs/screenshot.gif?raw=true "dirp Screenshot")
 
 
 ## Installation:
 
 See configuration for more details -here's the quick setup/default stuff
 
-Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc`. The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly underused, and why many programmers and admins seek other utilities (that IMHO are usually over compensating for 'something').
+Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc`. The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly underused, and why many programmers and admins seek other utilities.
 
 1. Clone the project
 2. Create a project management directory (small files, per project, that store the absolute paths of files you want to cache)
@@ -97,9 +97,6 @@ Here's some references that might help out if you want to play around with color
 * [Shell Colors: colorizing shell scripts ~ Bash Shell Scripting by Examples](http://www.bashguru.com/2010/01/shell-colors-colorizing-shell-scripts.html)
 
 
-## Use Cases & References:
-* TODO: coming soon!
-    * sorry I ran out of time to formulate this properly this week. I'll try to update this in the next few days.
 
 ## Command line usable functions and aliases:
 
@@ -145,7 +142,7 @@ Here's some references that might help out if you want to play around with color
      5  ~/Scratch/blessed-contrib/lib/widget
      6  ~/Scratch/blessed/lib/widgets
      7  ~/Scratch/blessed/test
-    karl@karl-samsung ~ $ 3
+    karl@karl-samsung ~ $ 3                         # using alias here
     karl@karl-samsung ~/Projects/timetrap_tui/dev_cycles/phase2.0 $
     ```
 
@@ -241,11 +238,105 @@ Here's some references that might help out if you want to play around with color
 * dirp_msg
     * echo messages relative to 'expert mode' for printing hints and wtf stuffs
 
+## Use Cases & Examples:
+### Initial setup for use case examples
+```
+karl@karl-samsung ~ $ dirs -c
+karl@karl-samsung ~ $ mkdir -p Scratch/tmp_examples/somefiles
+karl@karl-samsung ~ $ cd Scratch/tmp_examples/somefiles
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ dirpl
+Load Project File:
+1) dirp          3) testproject   5) Quit
+2) testing       4) timetrap_tui
+#? 4
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ d
+timetrap_tui:
+ 1  ~/Projects/github/Timetrap_TUI
+ 2  ~/Projects/github/node-timetrap_wraplib
+ 3  ~/Projects/timetrap_tui/dev_cycles/phase2.0
+ 4  ~/Projects/timetrap_tui/dev_cycles/phase2.1
+ 5  ~/Scratch/blessed-contrib/lib/widget
+ 6  ~/Scratch/blessed/lib/widgets
+ 7  ~/Scratch/blessed/test
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ pd
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ d
+timetrap_tui:
+ 1  ~/Scratch/tmp_examples/somefiles
+ 2  ~/Projects/github/Timetrap_TUI
+ 3  ~/Projects/github/node-timetrap_wraplib
+ 4  ~/Projects/timetrap_tui/dev_cycles/phase2.0
+ 5  ~/Projects/timetrap_tui/dev_cycles/phase2.1
+ 6  ~/Scratch/blessed-contrib/lib/widget
+ 7  ~/Scratch/blessed/lib/widgets
+ 8  ~/Scratch/blessed/test
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ cd
+karl@karl-samsung ~ $
+```
+
+### Copying or Moving Files with less work
+* You can copy and move files around with less work via command line by having directory stacks in place.
+* Example: copy files between to long directory paths using the `~` operator.
+```
+karl@karl-samsung ~ $ d
+timetrap_tui:
+ 1  ~/Scratch/tmp_examples/somefiles
+ 2  ~/Projects/github/Timetrap_TUI
+ 3  ~/Projects/github/node-timetrap_wraplib
+ 4  ~/Projects/timetrap_tui/dev_cycles/phase2.0
+ 5  ~/Projects/timetrap_tui/dev_cycles/phase2.1
+ 6  ~/Scratch/blessed-contrib/lib/widget
+ 7  ~/Scratch/blessed/lib/widgets
+ 8  ~/Scratch/blessed/test
+karl@karl-samsung ~ $ ls ~2
+coverage  lib      node_modules  package-lock.json  timetrap_tui.js
+devel     LICENSE  package.json  README.md
+karl@karl-samsung ~ $ cp ~2/README.md ~1
+karl@karl-samsung ~ $ ls ~1
+README.md
+karl@karl-samsung ~ $
+```
+
+### Creating a new project adding directories and saving it.
+```
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ dirs -c
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ d
+tmp_examples:
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ pd
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ pushd -n /usr/local/share/
+~/Scratch/tmp_examples/somefiles /usr/local/share/ ~/Scratch/tmp_examples/somefiles
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ d
+tmp_examples:
+ 1  /usr/local/share/
+ 2  ~/Scratch/tmp_examples/somefiles
+karl@karl-samsung ~/Scratch/tmp_examples/somefiles $ dirp
+1) load project           5) list directories      9) append from project
+2) create project         6) add directory        10) show configuration
+3) save to project        7) delete directory     11) Quit
+4) delete project         8) clear dirs
+#? 2
+New Project Name ([C-c|Enter] to quit): tmp_example
+Created project file /home/karl/dirlists/tmp_example
+```
+
+### Automatically set new terminals to load the latest project used.
+* One example of this is that you run a preconfigured tmux session with 3 pains. In order to have all 3 panes open with the preconfigured directory stack. With default settings the cache file is stored in /tmp -which will be erased upon reboot.
+1. `dirp_auto` is at the at the end of your `.bashrc` or equivilent.
+2. you have preconfigured project files as per instructins above.
+3. you've just reboot your system.
+4. you now open a terminal.
+```
+Error: File /tmp/dirp_latest not found and project argument was not provided.
+Load Project File:
+1) dirp          3) testproject   5) Quit
+2) testing       4) timetrap_tui
+#? 2                              # using alias here
+karl@karl-samsung ~ $ tmuxinator mydefault_project
+```
+5. now all the terminals will open with the 'testing' project stack in place (until you pick a new project)
+
 ## Further Notes:
 
 Comments and pointers and criticisms and opinions are VERY WELCOME. Please do say something if you have suggestions. Otherwise I'm likely not going to do much with this project. I've been using most of these functions for nearly a decade as it is -shame on me for not sharing. I do hope some of this stuff helps someone out there somewhere.
-
-Also, please take no offense at my seemingly lighthearted treatment of this material. I really do take this stuff very seriously -it's my lifeblood and keeps me sane. Also I've written nearly 400 lines of code here with over 100 lines of comments as a token of my sincerity. The goofy way that I've presented some of this material is a reflection of my experience with like minded persons who, for the 20 years I've been in this industry, constantly seek out better ways of doing things and are driven absolutely crazy when tools like dirs/pushd/popd aren't more widely used. My version of levity here is a reflection of these frustrations and insights and ah! ha! moments when you are given a tool but never given any/much information on how to use it. Hey, versions of directory stacks have been around for longer than I've been in this industry, and I'm telling you... just type `man dirs` in your linux terminal right now -90% of all unix's (I'm guessing) have zero documentation. Look this stuff up? Lots of questions and not a lot of answers about actually managing your environment with these awesome tools. So with all due respect to the implementers, it's kind of a sad joke these tools were never leveraged as they could have been. -my 2 cents.
 
 ## Licence:
 This project is hereby copy written by Karl N. Redman (November 29, 2017). Any use of this intellectual property is permitted insofar as such usage conforms to the MIT license included within the project. All rights reserved.
