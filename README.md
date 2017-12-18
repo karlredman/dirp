@@ -56,6 +56,8 @@ All configuration variables can be overridden via environment before sourcing th
 ### Configuration Variables:
 * DIRP_LATEST_FILE
     * absolute path of file containing the name of the latest project managed by dirp
+    * if set to 'NONE' then dirp_auto returns without reading a file. i.e. no questions or loading of previous project.
+        * this is useful if you start tmux/tmuxinator with a `pre: DIRP_LATEST_FILE='NONE';`
 * DIRP_PROJECTS_DIR
     * absolute path of the directory repository of project files -that contain directory lists
         * file names are equal to project name

@@ -294,6 +294,10 @@ dirp_auto() {
 	# argument (optional, overrides DIRP_LATEST_FILE):  project name
 	# behavior:
 
+    if [[ ($DIRP_LATEST_FILE == 'NONE') ]]; then
+        return
+    fi
+
 	# present menu if cache file not found or project name not provided
     DIRP_LATEST=$(cat $DIRP_LATEST_FILE 2>/dev/null)
     if [[ ( $DIRP_LATEST == '' )
