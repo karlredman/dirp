@@ -4,6 +4,8 @@ A Bash shell native dirs/pushd/popd manager.
 
 Author: [Karl N. Redman](https://karlredman.github.io/)
 
+# Note: This project is horribly broken at the moment. I's going through a rewrite process as of (4/25/2018).... I'll update info as soon as possible.
+
 dirp is a bash script meant to be sourced in your .bashrc file to help manage the `dirs`, `pushd`, `popd` builtin functions of bash shell. If ever you wanted to harness the power of dirs/pushd/popd than this is a good place to start. While there isn't much here in the way of originality you may find this tool useful because of it's amalgamation of utility. Let's face it, dirs/pushd/popd is powerful, we all know it, but it's so darn hard to make it work for us. Hopefully this project will help. You are a command line warrior. Now take charge and control your contextual working directory space too!
 
 ## Features:

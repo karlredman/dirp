@@ -39,6 +39,9 @@ fi
 if [ -z ${DIRP_USEALIASES_DIRNUMS+notArealVariable} ];then
 	DIRP_USEALIASES_DIRNUMS=true
 fi
+if [ -z ${DIRP_THIS_PROJECT+notArealVariable} ];then
+	DIRP_THIS_PROJECT=''
+fi
 #-------------------------------------------
 
 ############################################
@@ -116,6 +119,7 @@ dirp_appendProject() {
 	# arguments
 	## $1: project name
 	## $2: clear dirs [true|false]
+    ### note: if $2 is true, set current project variable `$DIRP_THIS_PROJECT`
 	### note: if $2==true, update DIRP_LATEST_FILE
 
 	# specify a list delimiter
@@ -135,18 +139,35 @@ dirp_appendProject() {
 
 		#this is a replacement so save the project name as latest
         echo $1> $DIRP_LATEST_FILE
+        DIRP_THIS_PROJECT=$1
 	fi
 
     while read p
 	# loop through file contents
     do
 		# go to directory
-		# cd will report errors for us
+        # verify directory or link exists
+        if [ -d "${p}" ]; then
+            # check if it'a a link that points to a valid directory
+            if [ -L "${p}" ];then
+                # readlink is not a posix call....
+                local source="$(readlink -e "${p}")"
+                # check status of readlink
+                if [ $? -gt 0 ]; then
+                    continue;
+                fi
+            fi
+
+        # it exists
         cd "${p}"
 
 		# push the dir onto dirs stack
-        #pushd . 2>/dev/null
         pushd . >/dev/null 2>&1
+
+        else
+            continue;
+        fi
+
     done <$DIRP_PROJECTS_DIR/$1
 
 	# return to original dir
@@ -197,15 +218,26 @@ dirp_deleteProject() {
 
 dirp_listColorized() {
 	# list items in `dirs -v` with alternating colors
+    # current $DIRP_THIS_PROJECT overrides DIRP_LATEST_FILE
 
-    DIRP_LATEST=$(cat $DIRP_LATEST_FILE 2>/dev/null)
-    if [[ ( $DIRP_LATEST == '' ) ]]; then
-        echo "Error: File $DIRP_LATEST_FILE not found and project argument was not provided."
-		# show a menu -list projects
-		dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
-	else
-		echo "$DIRP_LATEST:"
-	fi
+    if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+        DIRP_LATEST=$(cat $DIRP_LATEST_FILE 2>/dev/null)
+        if [[ ( $DIRP_LATEST == '' ) ]]; then
+            echo "Error: File $DIRP_LATEST_FILE not found and project argument was not provided."
+            # show a menu -list projects
+            dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
+        else
+            echo "Loaded most recent project: $DIRP_LATEST"
+            # reread the file -so.... inefficient...
+            dirp_appendProject $DIRP_LATEST true
+        fi
+    else
+        DIRP_LATEST=$DIRP_THIS_PROJECT
+
+        # reread the file
+        dirp_appendProject $DIRP_LATEST true
+    fi
+
 
 	# specify a list delimiter
     old_IFS="$IFS"
@@ -338,14 +370,14 @@ dirp_msg() {
 }
 
 dirp_menu_main() {
-	# Entrypoint for dirp menu
+	# Description: Entrypoint for dirp menu
 
-    DIRP_LATEST=$(cat /tmp/dirp_latest 2>/dev/null)
-    if [[ ( $DIRP_LATEST == '' )
-        && ( $# -ne 1 ) ]]; then
-        echo "Error: \$DIRP_LATEST isn't set or no file argument provided."
-		return;
-	fi
+    # DIRP_LATEST=$(cat /tmp/dirp_latest 2>/dev/null)
+    # if [[ ( $DIRP_LATEST == '' )
+    #     && ( $# -ne 1 ) ]]; then
+    #     echo "Error: \$DIRP_LATEST isn't set or no file argument provided."
+		# return;
+	# fi
 
 	# displays in order of array entry
 	menu_items_main=(
@@ -412,7 +444,7 @@ dirp_menu_main() {
 					esac
 				done
 				if [ $fail = false ]; then
-					dirp_saveProject $DIRP_LATEST
+					dirp_saveProject "$DIRP_LATEST"
 					dirp_msg "done. Note: this is similar to 'cd <dir>; pushd .;cd -; dirp_saveProject <project name>'"
 				fi
 				break
@@ -430,7 +462,7 @@ dirp_menu_main() {
 						if [ $? -gt 0 ]; then
 							echo "Error: invalid input."
 						else
-							dirp_saveProject $DIRP_LATEST true
+							dirp_saveProject "$DIRP_LATEST" true
 							dirp_msg "done. Note: this is the same as '<dirs -v|dirp|dirp_listColorized>; popd +<dirs index>; dirp_saveProject <project name> true'"
 						fi
 						break
@@ -477,6 +509,40 @@ dirp_menu_main() {
 		esac
 	done
 }
+
+dirpu() {
+    # * Description: pushd replacement
+    # * Arguments:
+    #   * $1:
+    #       * [directory]: adds directory if provided
+    #       * default: `CWD`
+    ## TODO:
+    # * check for / parse argument
+    # * check for popd error
+    ## Notes:
+    # * pushd -N/+N not honored (use pushd for that)
+    # * pushd -n is the same as `pod [dir]`
+
+	# pushd `cwd`
+    pushd . >/dev/null
+
+    # update the project file
+	dirp_saveProject "$DIRP_THIS_PROJECT" true
+}
+
+dirpo() {
+    # Description: popd replacement
+    #TODO: check for / parse argument
+    #TODO: check for popd error
+
+	# pushd `cwd`
+    popd '+'$1 >/dev/null # TODO: should be conditional based on +/- prefix
+
+    # update the project file
+	#dirp_appendProject "$DIRP_THIS_PROJECT" true
+
+	dirp_saveProject "$DIRP_THIS_PROJECT" true
+}
 #-------------------------------------------
 
 ############################################
@@ -488,9 +554,10 @@ dirpl() {
 }
 
 dirps() {
-	# save dirs list to project selection
+    # save dirs list to project selection (overwrites project file)
 	dirp_menu_projects_cb "Save dirs list to Project File:" dirp_saveProject true
 }
+
 #-------------------------------------------
 
 
@@ -503,10 +570,11 @@ if [ $DIRP_USEALIASES_SUITE = true ]; then
 	alias dirp=dirp_menu_main
 
 	# pushd `cwd`
-	alias pd="pushd . >/dev/null 2<&1"
+    #alias pd="pushd . >/dev/null 2<&1"
 
 	# list current project colorized
 	alias d=dirp_listColorized
+	#alias D=dirp_listColorized all
 fi
 
 if [ $DIRP_USEALIASES_DIRNUMS = true ]; then
