@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Description:
-# dirp -a bash script for managing dirs, pushd, and popd
+# dirp -a bash script for managing dirs, pushd, and popd across terminals and systems.
 
 # Author: [Karl N. Redman](https://karlredman.github.io)
 # Project: [dirp: bash script for builtins - dirs, pushd, popd management](https://github.com/karlredman/dirp)
