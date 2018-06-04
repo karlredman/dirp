@@ -518,13 +518,13 @@ dirp_menu_main() {
 				;;
 			"list directories")
 				dirp_listColorized
-				dirp_msg "done. Note: this is the same as 'dirs -v' (without color)| dirp_listColorized"
+				#dirp_msg "done. Note: this is the same as 'dirs -v' (without color)| dirp_listColorized"
 				break
 				;;
 			'load project')
 				dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
 				dirp_listColorized
-				dirp_msg "done. Note: this is the same as 'dirp_appendProject <project name> true; dirp_listColorized'"
+				#dirp_msg "done. Note: this is the same as 'dirp_appendProject <project name> true; dirp_listColorized'"
 				break
 				;;
 			'add directory')
@@ -561,7 +561,7 @@ dirp_menu_main() {
 				done
 				if [ $fail = false ]; then
 					dirp_saveProject "$DIRP_LATEST"
-					dirp_msg "done. Note: this is similar to 'cd <dir>; pushd .;cd -; dirp_saveProject <project name>'"
+					#dirp_msg "done. Note: this is similar to 'cd <dir>; pushd .;cd -; dirp_saveProject <project name>'"
 				fi
 				break
 				;;
@@ -579,7 +579,7 @@ dirp_menu_main() {
 							echo "Error: invalid input."
 						else
 							dirp_saveProject "$DIRP_LATEST" true
-							dirp_msg "done. Note: this is the same as '<dirs -v|dirp|dirp_listColorized>; popd +<dirs index>; dirp_saveProject <project name> true'"
+							#dirp_msg "done. Note: this is the same as '<dirs -v|dirp|dirp_listColorized>; popd +<dirs index>; dirp_saveProject <project name> true'"
 						fi
 						break
 						;;
@@ -588,7 +588,7 @@ dirp_menu_main() {
 				;;
 			'save to project')
 				dirp_menu_projects_cb "Save dirs list to Project File:" dirp_saveProject true
-				dirp_msg "done. Note: this is the same as 'dirp_saveProject <project name> true'"
+				#dirp_msg "done. Note: this is the same as 'dirp_saveProject <project name> true'"
 				break
 				;;
 			'create project')
