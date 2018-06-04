@@ -8,7 +8,7 @@ dirp provides an easy way to traverse and store complex and lengthy directory lo
 
 ## Current Features:
 
-See the same list of features with examples [here](https://github.com/karlredman/dirp/wiki/Featue_Examples.md).
+See the same list of features with examples [here](https://github.com/karlredman/dirp/wiki/Featue_Examples).
 
 * List and select directories managed by `dirs` in alternating colors in groups.
 * Simplified directory traversal and usage.
