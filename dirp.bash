@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Description:
-# dirp -a bash script for managing dirs, pushd, and popd
+# dirp -a bash script for managing dirs, pushd, and popd across terminals and systems.
 
 # Author: [Karl N. Redman](https://karlredman.github.io)
 # Project: [dirp: bash script for builtins - dirs, pushd, popd management](https://github.com/karlredman/dirp)
@@ -206,6 +206,10 @@ dirp_deleteProject() {
 			if [[ $YES == 'true' ]]; then
 				rm -i "$DIRP_PROJECTS_DIR/$p"
 				echo "Deleted $file_name"
+
+                # reset this project and wipe tmp file
+                DIRP_LATEST=''
+                > $DIRP_LATEST_FILE
 			fi
 		else
 			echo "Project file $file_name not found"
@@ -238,6 +242,7 @@ dirp_listColorized() {
         dirp_appendProject $DIRP_LATEST true
     fi
 
+    echo "Current project: $DIRP_THIS_PROJECT"
 
 	# specify a list delimiter
     old_IFS="$IFS"
@@ -304,8 +309,9 @@ dirp_menu_projects_cb(){
 
 dirp_showConfig(){
 	# show configuration settings
-	echo "DIRP_LATEST_FILE: $DIRP_LATEST_FILE"
+    echo "DIRP_THIS_PROJECT: $DIRP_THIS_PROJECT"
 	echo "DIRP_PROJECTS_DIR: $DIRP_PROJECTS_DIR"
+	echo "DIRP_LATEST_FILE: $DIRP_LATEST_FILE"
 	#
 	echo -n -e "$DIRP_LIST_COLOR1""DIRP_LIST_COLOR1: "
 	echo $(echo $DIRP_LIST_COLOR1 | sed /\\/\\\\/g)
@@ -321,43 +327,45 @@ dirp_showConfig(){
 	echo "DIRP_USEALIASES_DIRNUMS: $DIRP_USEALIASES_DIRNUMS"
 }
 
-dirp_auto() {
-	# entry point for suite -
-	# argument (optional, overrides DIRP_LATEST_FILE):  project name
-	# behavior:
+#dirp_auto() {
+#    # !!!! undocumented -posible removal (causes problems with some window managers)
 
-    if [[ ($DIRP_LATEST_FILE == 'NONE') ]]; then
-        return
-    fi
+#	# entry point for suite -
+#	# argument (optional, overrides DIRP_LATEST_FILE):  project name
+#	# behavior:
 
-	# present menu if cache file not found or project name not provided
-    DIRP_LATEST=$(cat $DIRP_LATEST_FILE 2>/dev/null)
-    if [[ ( $DIRP_LATEST == '' )
-        && ( $# -ne 1 ) ]]; then
-        echo "Error: File $DIRP_LATEST_FILE not found and project argument was not provided."
-		# show a menu -list projects
-		dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
+#    if [[ ($DIRP_LATEST_FILE == 'NONE') ]]; then
+#        return
+#    fi
 
-	else
-		# seed
-        project_name=$DIRP_LATEST
+#	# present menu if cache file not found or project name not provided
+#    DIRP_LATEST=$(cat $DIRP_LATEST_FILE 2>/dev/null)
+#    if [[ ( $DIRP_LATEST == '' )
+#        && ( $# -ne 1 ) ]]; then
+#        echo "Error: File $DIRP_LATEST_FILE not found and project argument was not provided."
+#		# show a menu -list projects
+#		dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
 
-		# override DIRP_LATEST if an argument was specified
-        if [[ $# -ge 1 ]]; then
-			# user provided a project name
-            project_name=$1;
-        fi
+#	else
+#		# seed
+#        project_name=$DIRP_LATEST
 
-		# append contents of project file to `dirs`
-		# TODO: test if project file exists and is not empty
-        dirp_appendProject $project_name true
+#		# override DIRP_LATEST if an argument was specified
+#        if [[ $# -ge 1 ]]; then
+#			# user provided a project name
+#            project_name=$1;
+#        fi
 
-        #export DIRP_LATEST=$dir
-	fi
-}
+#		# append contents of project file to `dirs`
+#		# TODO: test if project file exists and is not empty
+#        dirp_appendProject $project_name true
+
+#        #export DIRP_LATEST=$dir
+#	fi
+#}
 
 dirp_msg() {
-	if [[ ( $# -ne 1 ) ]]; then
+	if [[ ( $# -lt 1 ) ]]; then
 		echo "Error: dirp_msg() call failed"
 		return;
 	fi
@@ -368,6 +376,100 @@ dirp_msg() {
 		echo $msg
 	fi
 }
+
+typeset -A dirp_all_commands
+dirp_all_commands=(
+[dirp]=0
+[dirpp]=1
+[dirpl]=2
+[dirpu]=3
+[dirpo]=4
+[dirpos]=5
+[dirps]=6
+# [dirpc]=7
+# [dirpmf]=8
+# [dirpmt]=9
+)
+dirp_cmd_names=(
+"dirp"
+"dirpp"
+"dirpl"
+"dirpu"
+"dirpo"
+"dirpos"
+"dirps"
+# "dirpc"
+# "dirpmf"
+# "dirpmt"
+)
+dirp_cmd_desc=(
+"main menu interface / help with option \'help\'"
+"choose dirp project"
+"list directories in current project"
+"pushd current directory and save to project"
+"popd the index from dirpl"
+"popd the index from selection"
+"create new project"
+"save current list to selected project"
+# "merge current list from selected project"
+# "merge current list to selected project"
+)
+dirp_cmd_use=(
+"dirp [help]"
+"dirpp"
+"dirpl"
+"dirpu"
+"dirpo <index 1-n>"
+"dirpos"
+"dirps"
+# "dirpc [name]"
+# "dirpmf"
+# "dirpmt"
+)
+
+dirp_cusage() {
+	# Description: print a usage message for a command
+	# Use: dirp_fusage <""|"beggining message goes here"> <command_name> [true]
+	#
+	# Note: There are miriad ways to do this. I'm going for simple maintenence here..
+
+	# validate number of parameters
+	if [[ $# -ge 1 ]]; then
+
+		for name in "${!dirp_all_commands[@]}"
+		do
+			elem=${dirp_all_commands[$name]}
+			if [ "$2" == "$name" ];
+			then
+				if [ ! "$1" == "" ];
+				then
+					# print the message if it's not empty
+					echo "$1:"
+				fi
+				echo "\`${dirp_cmd_use[$elem]}\`: ${dirp_cmd_desc[$elem]}"
+			fi
+		done
+	else
+		echo "Error: dirp_cusage() not enough parameters."
+	fi
+}
+
+dirp_cusage_all() {
+	# print all commands
+    echo "dirp: A bash script for managing dirs, pushd, and popd across terminals and systems."
+    echo "Project Page: https://github.com/karlredman/dirp"
+    echo "Requires: Bash >=v4"
+    echo "Author: Karl N. Redman"
+    echo "License: MIT"
+	echo "Command Usage:"
+    for i in $(seq 0 $(( ${#dirp_all_commands[@]} -1)) )
+	do
+		#elem=${dirp_all_commands[$name]}
+        echo -n "   "
+		dirp_cusage "" ${dirp_cmd_names[$i]}
+	done
+}
+
 
 dirp_menu_main() {
 	# Description: Entrypoint for dirp menu
@@ -388,9 +490,11 @@ dirp_menu_main() {
 	'list directories'
 	'add directory'
 	'delete directory'
-	'clear dirs'
-	'append from project'
+	# 'append from project'
+    # 'clear project'
+	# 'clear dirs'
 	'show configuration'
+    'Help'
 	)
 	menu_items_main+=('Quit')
 
@@ -488,20 +592,37 @@ dirp_menu_main() {
 				dirp_msg "done. Note this is the same as 'rm -i <project file path>'"
 				break
 				;;
-			'clear dirs')
-				dirs -c
-				dirp_msg "done. Note: this is the same as 'dirs -c'"
-				break
-				;;
-			'append from project')
-				dirp_menu_projects_cb "Append to Current 'dirs' List:" dirp_appendProject false
-				break
-				;;
+			# 'clear project')
+			# 	dirs -c
+			# 	> ${DIRP_PROJECTS_DIR}/${DIRP_THIS_PROJECT}
+            #   dirp_msg "done. Note: this is the same as 'dirs -c && >\${DIRP_PROJECTS_DIR}/\${DIRP_THIS_PROJECT}'"
+			# 	break
+			# 	;;
+			# 'clear dirs')
+			# 	dirs -c
+			# 	dirp_msg "done. Note: this is the same as 'dirs -c'"
+			# 	break
+			# 	break
+			# 	;;
+			# 'append from project')
+                # if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+                    # dirp_msg "Error: No active project."
+                    # dirp_msg "Use \`dirpp\` to select a project OR"
+                    # dirp_msg "Use \`dirpl\` to enable most recent project."
+                    # return
+                # fi
+			# 	dirp_menu_projects_cb "Append to Current project List $DIRP_THIS_PROJECT:" dirp_appendProject false
+			# 	break
+			# 	;;
 
 			'show configuration')
 				dirp_showConfig
 				break
 				;;
+            'Help')
+                dirp_cusage_all
+                break
+                ;;
 			*)
 				echo "Error: Bad input."
 				break
@@ -516,15 +637,29 @@ dirpu() {
     #   * $1:
     #       * [directory]: adds directory if provided
     #       * default: `CWD`
-    ## TODO:
-    # * check for / parse argument
-    # * check for popd error
     ## Notes:
     # * pushd -N/+N not honored (use pushd for that)
-    # * pushd -n is the same as `pod [dir]`
 
-	# pushd `cwd`
-    pushd . >/dev/null
+    if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+      dirp_msg "Error: No active project."
+      dirp_msg "Use \`dirpp\` to select a project OR"
+      dirp_msg "Use \`dirpl\` to enable most recent project."
+      return
+    fi
+
+    if [ ! -z ${1+notArealVariable} ];then
+		if ! pushd $1 >/dev/null 2>&1;
+        then
+            dirp_msg "Error: Directory does not exist"
+            return
+        fi
+
+        # TODO: why am i calling this twice?....
+		pushd $1 >/dev/null
+    else
+        # pushd `cwd`
+        pushd . >/dev/null
+    fi
 
     # update the project file
 	dirp_saveProject "$DIRP_THIS_PROJECT" true
@@ -532,15 +667,29 @@ dirpu() {
 
 dirpo() {
     # Description: popd replacement
-    #TODO: check for / parse argument
-    #TODO: check for popd error
+    if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+      dirp_msg "Error: No active project."
+      dirp_msg "Use \`dirpp\` to select a project OR"
+      dirp_msg "Use \`dirpl\` to enable most recent project."
+      return
+    fi
+
+    if [ -z ${1+notArealVariable} ];then
+		dirp_cusage "Argument Error" "dirpo"
+        return
+    fi
+
+    # check index range
+    let tot=($(dirs -v |wc -l)-1)
+    if [ $tot -eq 0 -o $1 -eq 0 -o $tot -lt $1 ]; then
+		dirp_cusage "Index out of range" "dirpo"
+        return
+    fi
 
 	# pushd `cwd`
-    popd '+'$1 >/dev/null # TODO: should be conditional based on +/- prefix
+    popd '+'$1 >/dev/null # TODO: ?? should be conditional based on +/- prefix ??
 
     # update the project file
-	#dirp_appendProject "$DIRP_THIS_PROJECT" true
-
 	dirp_saveProject "$DIRP_THIS_PROJECT" true
 }
 #-------------------------------------------
@@ -550,14 +699,34 @@ dirpo() {
 ############################################
 dirpl() {
 	# load project from project selection
+	dirp_listColorized
+}
+dirpp() {
+	# load project from project selection
 	dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
 }
 
 dirps() {
+    if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+      dirp_msg "Error: No active project."
+      dirp_msg "Use \`dirpp\` to select a project OR"
+      dirp_msg "Use \`dirpl\` to enable most recent project."
+      return
+    fi
     # save dirs list to project selection (overwrites project file)
 	dirp_menu_projects_cb "Save dirs list to Project File:" dirp_saveProject true
 }
 
+dirp() {
+
+    if [ ! -z ${1+notArealVariable} ];then
+        # show help
+        dirp_cusage_all
+        return
+    fi
+
+	dirp_menu_main
+}
 #-------------------------------------------
 
 
@@ -566,15 +735,8 @@ dirps() {
 ############################################
 
 if [ $DIRP_USEALIASES_SUITE = true ]; then
-	# main menu
-	alias dirp=dirp_menu_main
-
-	# pushd `cwd`
-    #alias pd="pushd . >/dev/null 2<&1"
-
 	# list current project colorized
 	alias d=dirp_listColorized
-	#alias D=dirp_listColorized all
 fi
 
 if [ $DIRP_USEALIASES_DIRNUMS = true ]; then
