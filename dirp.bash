@@ -411,7 +411,7 @@ dirp_cmd_use=(
 "dirpp"
 "dirpl"
 "dirpu"
-"dirpo <index>"
+"dirpo <index 1-n>"
 "dirpos"
 "dirpc [name]"
 "dirps"
@@ -620,12 +620,17 @@ dirpu() {
 
 dirpo() {
     # Description: popd replacement
-    #TODO: check for / parse argument
     if [ -z ${1+notArealVariable} ];then
-        usage "Argument Error:" dirpo
+		dirp_cusage "Argument Error" "dirpo"
+        return
     fi
 
-    #TODO: check for popd error
+    # check index range
+    let tot=($(dirs -v |wc -l)-1)
+    if [ $tot -eq 0 -o $1 -eq 0 -o $tot -lt $1 ]; then
+		dirp_cusage "Index out of range" "dirpo"
+        return
+    fi
 
 	# pushd `cwd`
     popd '+'$1 >/dev/null # TODO: should be conditional based on +/- prefix
