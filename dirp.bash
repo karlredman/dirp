@@ -489,7 +489,7 @@ dirp_menu_main() {
 	'delete project'
 	'list directories'
 	'add directory'
-	'delete directory'
+	'remove directory'
 	# 'append from project'
     # 'clear project'
 	# 'clear dirs'
@@ -553,7 +553,7 @@ dirp_menu_main() {
 				fi
 				break
 				;;
-			'delete directory')
+			'remove directory')
 				dirp_listColorized
 				echo ""
 				read -p "Delete a directory from the list ([C-c|Enter|q] to quit): " input

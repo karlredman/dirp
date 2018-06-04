@@ -8,7 +8,7 @@ dirp provides an easy way to traverse and store complex and lengthy directory lo
 
 ## Current Features:
 
-See the same list of features with examples [here]().
+See the same list of features with examples [here](https://github.com/karlredman/dirp/wiki/Featue_Examples.md).
 
 * List and select directories managed by `dirs` in alternating colors in groups.
 * Simplified directory traversal and usage.
@@ -24,6 +24,8 @@ See the same list of features with examples [here]().
 * Colors and application behavior managed by environment variables.
 * Short list of commands.
 * Command tips (disabled via environment variable).
+* Synchronize across multiple systems:
+	* see the wiki page: [Home · karlredman/dirp Wiki](https://github.com/karlredman/dirp/wiki)
 
 
 ## Screenshots:
@@ -36,6 +38,7 @@ Note: It is imperative that this operates via `source <file path>/dirp.bash` fro
 
 * Note requirements:
     * Bash >=v4.0
+    * Linux: (tested only on Linux)
 
 1. Clone the project
 ```
