@@ -48,6 +48,15 @@ fi
 ################## Functions
 ############################################
 
+dirp_check_projectsdir() {
+    if [ -d $DIRP_PROJECTS_DIR ]; then
+        return 0
+    fi
+    echo "ERROR: projects directory $DIRP_PROJECTS_DIR  does not exist!"
+    return 1
+}
+
+
 dirp_saveProject() {
 	# Save a dirs list for a given project
 	# arguments:
@@ -61,6 +70,11 @@ dirp_saveProject() {
 	## must be converted to absolute paths
 
 	# TODO: this could be a bit more sophisticated
+
+    if ! dirp_check_projectsdir;
+    then
+        return;
+    fi
 
 	# fail by default
 	YES='false'
@@ -129,6 +143,11 @@ dirp_appendProject() {
     ### note: if $2 is true, set current project variable `$DIRP_THIS_PROJECT`
 	### note: if $2==true, update DIRP_LATEST_FILE
 
+    if ! dirp_check_projectsdir;
+    then
+        return;
+    fi
+
 
 	# save our cwd
     wd=`pwd`
@@ -157,7 +176,7 @@ dirp_appendProject() {
 		# go to directory
         # verify directory or link exists
         if [ -d "${p}" ]; then
-            # check if it'a a link that points to a valid directory
+            # check if it's a link that points to a valid directory
             if [ -L "${p}" ];then
                 # readlink is not a posix call....
                 local source="$(readlink -e "${p}")"
