@@ -28,7 +28,7 @@ dirp is a bash script meant to be sourced in your .bashrc file to help manage th
 
 See configuration for more details -here's the quick setup/default stuff
 
-Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc`. The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly underused, and why many programmers and admins seek other utilities.
+Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc`. The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly misunderused, and why many programmers and admins seek other utilities.
 
 1. Clone the project
 2. Create a project management directory (small files, per project, that store the absolute paths of files you want to cache)
