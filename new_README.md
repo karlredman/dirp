@@ -67,7 +67,7 @@ See the same list of features with examples [here]().
 | 9      | merge from project | merge directory list from selected project (same as 'dirpmf')                 |
 | 10     | merge to project   | merge directory list to selected project (same as dirpmt)                     |
 | 11     | show configuration | print current dirp settings                                                   |
-| 12     | quit               | quit the dirp menu                                                            |
+| 12     | Quit               | quit the dirp menu                                                            |
 | 13     |                    |                                                                               |
 
 ## Extended documentation (wiki):

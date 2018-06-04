@@ -357,7 +357,7 @@ dirp_auto() {
 }
 
 dirp_msg() {
-	if [[ ( $# -ne 1 ) ]]; then
+	if [[ ( $# -lt 1 ) ]]; then
 		echo "Error: dirp_msg() call failed"
 		return;
 	fi
@@ -368,6 +368,94 @@ dirp_msg() {
 		echo $msg
 	fi
 }
+
+typeset -A dirp_all_commands
+dirp_all_commands=(
+[dirp]=0
+[dirpp]=1
+[dirpl]=2
+[dirpu]=3
+[dirpo]=4
+[dirpos]=5
+[dirpc]=6
+[dirps]=7
+[dirpmf]=8
+[dirpmt]=9
+)
+dirp_cmd_names=(
+"dirp"
+"dirpp"
+"dirpl"
+"dirpu"
+"dirpo"
+"dirpos"
+"dirpc"
+"dirps"
+"dirpmf"
+"dirpmt"
+)
+dirp_cmd_desc=(
+"main menu interface / help with option --help"
+"choose dirp project"
+"list directories in current project"
+"pushd current directory and save to project"
+"popd the index from dirpl"
+"popd the index from selection"
+"create new project"
+"save current list to selected project"
+"merge current list from selected project"
+"merge current list to selected project"
+)
+dirp_cmd_use=(
+"dirp [--help]"
+"dirpp"
+"dirpl"
+"dirpu"
+"dirpo <index>"
+"dirpos"
+"dirpc [name]"
+"dirps"
+"dirpmf"
+"dirpmt"
+)
+
+dirp_cusage() {
+	# Description: print a usage message for a command
+	# Use: dirp_fusage <""|"beggining message goes here"> <command_name> [true]
+	#
+	# Note: There are miriad ways to do this. I'm going for simple maintenence here..
+
+	# validate number of parameters
+	if [[ $# -ge 1 ]]; then
+
+		for name in "${!dirp_all_commands[@]}"
+		do
+			elem=${dirp_all_commands[$name]}
+			if [ "$2" == "$name" ];
+			then
+				if [ ! "$1" == "" ];
+				then
+					# print the message if it's not empty
+					echo "$1:"
+				fi
+				echo "\`${dirp_cmd_use[$elem]}\`: ${dirp_cmd_desc[$elem]}"
+			fi
+		done
+	else
+		echo "Error: dirp_cusage() not enough parameters."
+	fi
+}
+
+dirp_cusage_all() {
+	# print all commands
+	echo "dirp command usage:"
+	for i in $(seq 0 ${#dirp_all_commands[@]})
+	do
+		#elem=${dirp_all_commands[$name]}
+		dirp_cusage "" ${dirp_cmd_names[$i]}
+	done
+}
+
 
 dirp_menu_main() {
 	# Description: Entrypoint for dirp menu
@@ -533,6 +621,10 @@ dirpu() {
 dirpo() {
     # Description: popd replacement
     #TODO: check for / parse argument
+    if [ -z ${1+notArealVariable} ];then
+        usage "Argument Error:" dirpo
+    fi
+
     #TODO: check for popd error
 
 	# pushd `cwd`
@@ -549,6 +641,10 @@ dirpo() {
 ################## Helpers
 ############################################
 dirpl() {
+	# load project from project selection
+	dirp_listColorized
+}
+dirpp() {
 	# load project from project selection
 	dirp_menu_projects_cb "Load Project File:" dirp_appendProject true
 }
