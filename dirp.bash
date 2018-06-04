@@ -104,8 +104,15 @@ dirp_saveProject() {
 				dirp_appendProject $1 true
 			fi
 		else
+            # TODO: clean this up when less tired
 			eval $command
+             dirs -c
+             DIRP_LATEST='$1'
+             DIRP_THIS_PROJECT=''
+             rm $DIRP_LATEST_FILE
 			dirp_appendProject $1 true
+            >$DIRP_PROJECTS_DIR/$1
+            #dirp_saveProject "$DIRP_LATEST"
 			echo "Created project file $file_name"
 		fi
     else
@@ -122,9 +129,6 @@ dirp_appendProject() {
     ### note: if $2 is true, set current project variable `$DIRP_THIS_PROJECT`
 	### note: if $2==true, update DIRP_LATEST_FILE
 
-	# specify a list delimiter
-    old_IFS="$IFS"
-    IFS=$'\n'
 
 	# save our cwd
     wd=`pwd`
@@ -139,8 +143,13 @@ dirp_appendProject() {
 
 		#this is a replacement so save the project name as latest
         echo $1> $DIRP_LATEST_FILE
+        DIRP_LATEST=$1
         DIRP_THIS_PROJECT=$1
 	fi
+
+	# specify a list delimiter
+    old_IFS="$IFS"
+    IFS=$'\n'
 
     while read p
 	# loop through file contents
