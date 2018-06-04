@@ -597,7 +597,13 @@ dirp_menu_main() {
 			# 	break
 			# 	;;
 			'append from project')
-				dirp_menu_projects_cb "Append to Current 'dirs' List:" dirp_appendProject false
+                if [[ ( $DIRP_THIS_PROJECT == '' ) ]];then
+                    dirp_msg "Error: No active project."
+                    dirp_msg "Use \`dirpp\` to select a project OR"
+                    dirp_msg "Use \`dirpl\` to enable most recent project."
+                    return
+                fi
+				dirp_menu_projects_cb "Append to Current project List $DIRP_THIS_PROJECT:" dirp_appendProject true
 				break
 				;;
 

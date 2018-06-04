@@ -47,10 +47,7 @@ See the same list of features with examples [here]().
 | dirpu           | `pushd` current directory and save to project |
 | dirpo \<index\> | `popd` the index from dirpl                   |
 | dirpos          | `popd` the index from selection               |
-| dirpc [name]    | create new project                            |
 | dirps           | save current list to selected project         |
-| dirpmf          | merge current list from selected project      |
-| dirpmt          | merge current list to selected project        |
 
 ### `dirp` Menu Reference:
 
@@ -63,8 +60,6 @@ See the same list of features with examples [here]().
 | 5      | list directories   | list directories in current list (same as `diprl`)                            |
 | 6      | add directory      | add `cwd` or specified directory to current list (same as `dirpu`)            |
 | 7      | delete directory   | remove a directory in current project from a selection list (same as `dirpo`) |
-| 8      | merge from project | merge directory list from selected project (same as 'dirpmf')                 |
-| 9      | merge to project   | merge directory list to selected project (same as dirpmt)                     |
 | 10     | show configuration | print current dirp settings                                                   |
 | 11     | Help               | show help message                                                             |
 | 12     | Quit               | quit the dirp menu                                                            |
