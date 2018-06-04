@@ -29,12 +29,13 @@ See the same list of features with examples [here]().
 ## Screenshots:
 ![dirp animated gif](https://github.com/karlredman/dirp/blob/master/docs/screenshot.gif?raw=true "dirp Screenshot")
 
-## asciinema Session:
-
 ## Installation:
 See configuration for more details -here's the quick setup/default stuff
 
 Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc` (or equivalent). The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly underused, and why many programmers and admins seek other utilities.
+
+* Note requirements:
+    * Bash >=v4.0
 
 1. Clone the project
 ```
@@ -53,9 +54,6 @@ source file_path/dirp.bash
 
 4. (optionally) Change configurables as needed/desired (see 'Configuration' below)
 
-
-### Short Examples/Usage:
-* More information in the wiki [Examples Section]()
 
 ## Command Usage:
 
@@ -84,8 +82,6 @@ source file_path/dirp.bash
 | 10     | show configuration | print current dirp settings                                                   |
 | 11     | Help               | show help message                                                             |
 | 12     | Quit               | quit the dirp menu                                                            |
-
-## Extended documentation (wiki):
 
 ### Extended Configuration:
 
@@ -146,12 +142,8 @@ Here's some references that might help out if you want to play around with color
 * [Jafrog's dev blog](http://jafrog.com/2013/11/23/colors-in-terminal.html)
 * [Shell Colors: colorizing shell scripts ~ Bash Shell Scripting by Examples](http://www.bashguru.com/2010/01/shell-colors-colorizing-shell-scripts.html)
 
-## Future Features:
-* Synchronize `pushd` and `popd` operations with dirp (optional).
-* Automatically synchronize a project list from a directory file
-* Easily synchronize directory groups across systems (via `ssh` or `git`).
-
 ## Contributing:
+Please read: [dirp/CONTRIBUTING.md at master · karlredman/dirp](https://github.com/karlredman/dirp/blob/master/CONTRIBUTING.md)
 
 ## License:
-This project is hereby copy written by Karl N. Redman (November 29, 2017). Any use of this intellectual property is permitted insofar as such usage conforms to the MIT license included within the project. All rights reserved.
+This project is hereby copy written by Karl N. Redman (November 29, 2017). Any use of this intellectual property is permitted insofar as such usage conforms to the MIT license included within the project. All rights reserved. Please refer to: [dirp/LICENSE at master · karlredman/dirp](https://github.com/karlredman/dirp/blob/master/LICENSE)
