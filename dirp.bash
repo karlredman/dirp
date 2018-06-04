@@ -204,12 +204,15 @@ dirp_deleteProject() {
 			done
 
 			if [[ $YES == 'true' ]]; then
-				rm -i "$DIRP_PROJECTS_DIR/$p"
+				#rm -i "$DIRP_PROJECTS_DIR/$p"
+				rm -i "$file_name"
 				echo "Deleted $file_name"
 
                 # reset this project and wipe tmp file
+                dirs -c
                 DIRP_LATEST=''
-                > $DIRP_LATEST_FILE
+                DIRP_THIS_PROJECT=''
+                rm $DIRP_LATEST_FILE
 			fi
 		else
 			echo "Project file $file_name not found"
