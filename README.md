@@ -47,7 +47,7 @@ git clone https://github.com/karlredman/dirp.git
 
 2. Create a project management directory (small files, per project, that store the absolute paths of files you want to cache)
 ```
-mkdir -p $HOME/dirlists"
+mkdir -p $HOME/dirlists
 ```
 
 3. Add the following to your `.bashrc` (or equivalent) file -toward the end...ish
@@ -57,6 +57,10 @@ source file_path/dirp.bash
 
 4. (optionally) Change configurables as needed/desired (see 'Configuration' below)
 
+5. start a new terminal or source your `bashrc`
+```
+source ~/.bashrc
+```
 
 ## Command Usage:
 
