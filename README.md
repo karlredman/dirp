@@ -57,7 +57,7 @@ source file_path/dirp.bash
 
 4. (optionally) Change configurables as needed/desired (see 'Configuration' below)
 
-5. start a new terminal or source your `.bashrc`
+5. start a new terminal or source your `bashrc`
 ```
 source ~/.bashrc
 ```
