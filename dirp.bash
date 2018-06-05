@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # Description:
 # dirp -a bash script for managing dirs, pushd, and popd across terminals and systems.
