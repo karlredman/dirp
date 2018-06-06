@@ -10,6 +10,7 @@ dirp provides an easy way to traverse and store complex and lengthy directory lo
 
 See the same list of features with examples [here](https://github.com/karlredman/dirp/wiki/Feature_Examples)
 
+* Does not interfere with dirs/pushd/popd normal operations.
 * List and select directories managed by `dirs` in alternating colors in groups.
 * Simplified directory traversal and usage.
 * Simplified aliases (optional).
