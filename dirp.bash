@@ -415,8 +415,8 @@ dirp_all_commands=(
 [dirpl]=2
 [dirpu]=3
 [dirpo]=4
-[dirpos]=5
-[dirps]=6
+#[dirpos]=5
+[dirps]=5
 # [dirpc]=7
 # [dirpmf]=8
 # [dirpmt]=9
@@ -427,7 +427,7 @@ dirp_cmd_names=(
 "dirpl"
 "dirpu"
 "dirpo"
-"dirpos"
+#"dirpos"
 "dirps"
 # "dirpc"
 # "dirpmf"
@@ -439,7 +439,7 @@ dirp_cmd_desc=(
 "list directories in current project"
 "pushd current directory and save to project"
 "popd the index from dirpl"
-"popd the index from selection"
+#"popd the index from selection"
 "create new project"
 "save current list to selected project"
 # "merge current list from selected project"
@@ -451,7 +451,7 @@ dirp_cmd_use=(
 "dirpl"
 "dirpu"
 "dirpo <index 1-n>"
-"dirpos"
+#"dirpos"
 "dirps"
 # "dirpc [name]"
 # "dirpmf"
