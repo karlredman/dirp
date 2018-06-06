@@ -88,18 +88,23 @@ dirp_saveProject() {
 		# if file exists
 		if [ -f $file_name ]; then
 
-			echo "Do you wish to overwrite $file_name?"
-			select yn in "Yes" "No"; do
-				case $yn in
-					Yes )
-						YES='true'
-						break
-						;;
-					No )
-						break
-						;;
-				esac
-			done
+            if [[ ! $DIRP_EXPERT -eq true ]];
+            then
+                echo "Do you wish to overwrite $file_name?"
+                select yn in "Yes" "No"; do
+                    case $yn in
+                        Yes )
+                            YES='true'
+                            break
+                            ;;
+                        No )
+                            break
+                            ;;
+                    esac
+                done
+            else
+                YES='true'
+            fi
 
 			if [[ $YES == 'true' ]]; then
 				# 1. dirs -v
