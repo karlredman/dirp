@@ -1,0 +1,1390 @@
+{
+  "title": "dirp Installation and Demo",
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "command": null,
+  "stdout": [
+    [
+      1.117145,
+      "$ "
+    ],
+    [
+      0.529655,
+      "####################################################################\r\n"
+    ],
+    [
+      7.9e-05,
+      "$ "
+    ],
+    [
+      0.000288,
+      "## Welcome to an install and demo of dirp (dirs/pushd/popd manager).\r\n"
+    ],
+    [
+      4.4e-05,
+      "$ "
+    ],
+    [
+      0.000256,
+      "## Project Page: https://github.com/karlredman/dirp\r\n"
+    ],
+    [
+      3e-05,
+      "$ "
+    ],
+    [
+      0.000325,
+      "####################################################################\r\n"
+    ],
+    [
+      3.7e-05,
+      "$ #\r\n"
+    ],
+    [
+      6.2e-05,
+      "$ "
+    ],
+    [
+      1.7e-05,
+      "#\r\n"
+    ],
+    [
+      0.000105,
+      "$ "
+    ],
+    [
+      7.6e-05,
+      "#"
+    ],
+    [
+      5.1e-05,
+      "\r\n"
+    ],
+    [
+      0.000141,
+      "$ #\r\n"
+    ],
+    [
+      5.3e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "############################################################"
+    ],
+    [
+      0.000116,
+      "\r\n"
+    ],
+    [
+      0.000341,
+      "$ "
+    ],
+    [
+      0.000417,
+      "## Installation for dirp\r\n"
+    ],
+    [
+      5.6e-05,
+      "$ "
+    ],
+    [
+      0.00057,
+      "############################################################\r\n"
+    ],
+    [
+      6.5e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "# figure out where you want to clone the repo"
+    ],
+    [
+      0.000809,
+      "\r\n$ cd ~/Projects/github\r\n"
+    ],
+    [
+      0.000108,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.002919,
+      "$ "
+    ],
+    [
+      0.000228,
+      "# clone the repo"
+    ],
+    [
+      0.001306,
+      "\r\n"
+    ],
+    [
+      0.000388,
+      "$ "
+    ],
+    [
+      0.000555,
+      "git clone https://github.com/karlredman/dirp.git\r\n"
+    ],
+    [
+      0.001604,
+      "Cloning into 'dirp'...\r\n"
+    ],
+    [
+      0.577351,
+      "remote: Counting objects: 110, done.\u001b[K\r\n"
+    ],
+    [
+      0.000787,
+      "remote: Compressing objects:   2% (1/43)   \u001b[K\r"
+    ],
+    [
+      9.7e-05,
+      "remote: Compressing objects:   4% (2/43)   \u001b[K\r"
+    ],
+    [
+      0.000269,
+      "remote: Compressing objects:   6% (3/43)   \u001b[K\r"
+    ],
+    [
+      0.0738,
+      "remote: Compressing objects:   9% (4/43)   \u001b[K\r"
+    ],
+    [
+      0.000161,
+      "remote: Compressing objects:  11% (5/43)   \u001b[K\r"
+    ],
+    [
+      9.1e-05,
+      "remote: Compressing objects:  13% (6/43)   \u001b[K\r"
+    ],
+    [
+      9.6e-05,
+      "remote: Compressing objects:  16% (7/43)   \u001b[K\r"
+    ],
+    [
+      0.0002,
+      "remote: Compressing objects:  18% (8/43)   \u001b[K\r"
+    ],
+    [
+      0.000122,
+      "remote: Compressing objects:  20% (9/43)   \u001b[K\r"
+    ],
+    [
+      0.000102,
+      "remote: Compressing objects:  23% (10/43)   \u001b[K\r"
+    ],
+    [
+      6.9e-05,
+      "remote: Compressing objects:  25% (11/43)   \u001b[K\r"
+    ],
+    [
+      7.8e-05,
+      "remote: Compressing objects:  27% (12/43)   \u001b[K\rremote: Compressing objects:  30% (13/43)   \u001b[K\rremote: Compressing objects:  32% (14/43)   \u001b[K\r"
+    ],
+    [
+      7.9e-05,
+      "remote: Compressing objects:  34% (15/43)   \u001b[K\rremote: Compressing objects:  37% (16/43)   \u001b[K\r"
+    ],
+    [
+      6.8e-05,
+      "remote: Compressing objects:  39% (17/43)   \u001b[K\rremote: Compressing objects:  41% (18/43)   \u001b[K\r"
+    ],
+    [
+      6.6e-05,
+      "remote: Compressing objects:  44% (19/43)   \u001b[K\rremote: Compressing objects:  46% (20/43)   \u001b[K\r"
+    ],
+    [
+      0.000969,
+      "remote: Compressing objects:  48% (21/43)   \u001b[K\rremote: Compressing objects:  51% (22/43)   \u001b[K\r"
+    ],
+    [
+      0.000218,
+      "remote: Compressing objects:  53% (23/43)   \u001b[K\rremote: Compressing objects:  55% (24/43)   \u001b[K\rremote: Compressing objects:  58% (25/43)   \u001b[K\rremote: Compressing objects:  60% (26/43)   \u001b[K\rremote: Compressing objects:  62% (27/43)   \u001b[K\r"
+    ],
+    [
+      0.000155,
+      "remote: Compressing objects:  65% (28/43)   \u001b[K\rremote: Compressing objects:  67% (29/43)   \u001b[K\rremote: Compressing objects:  69% (30/43)   \u001b[K\rremote: Compressing objects:  72% (31/43)   \u001b[K\rremote: Compressing objects:  74% (32/43)   \u001b[K\rremote: Compressing objects:  76% (33/43)   \u001b[K\rremote: Compressing objects:  79% (34/43)   \u001b[K\rremote: Compressing objects:  81% (35/43)   \u001b[K\rremote: Compressing objects:  83% (36/43)   \u001b[K\rremote: Compressing objects:  86% (37/43)   \u001b[K\rremote: Compressing objects:  88% (38/43)   \u001b[K\rremote: Compressing objects:  90% (39/43)   \u001b[K\rremote: Compressing objects:  93% (40/43)   \u001b[K\rremote: Compressing objects:  95% (41/43)   \u001b[K\rremote: Compressing objects:  97% (42/43)   \u001b[K\rremote: Compressing objects: 100% (43/43)   \u001b[K\rremote: Compressing objects: 100% (43/43), done.\u001b[K\r\n"
+    ],
+    [
+      0.012124,
+      "Receiving objects:   0% (1/110)   \r"
+    ],
+    [
+      4.8e-05,
+      "Receiving objects:   1% (2/110)   \rReceiving objects:   2% (3/110)   \r"
+    ],
+    [
+      3.1e-05,
+      "Receiving objects:   3% (4/110)   \r"
+    ],
+    [
+      4.5e-05,
+      "Receiving objects:   4% (5/110)   \r"
+    ],
+    [
+      2.9e-05,
+      "Receiving objects:   5% (6/110)   \r"
+    ],
+    [
+      7.5e-05,
+      "Receiving objects:   6% (7/110)   \r"
+    ],
+    [
+      2e-05,
+      "Receiving objects:   7% (8/110)   \r"
+    ],
+    [
+      0.000122,
+      "Receiving objects:   8% (9/110)   \r"
+    ],
+    [
+      0.000568,
+      "Receiving objects:   9% (10/110)   \rReceiving objects:  10% (11/110)   \rReceiving objects:  11% (13/110)   \r"
+    ],
+    [
+      0.00698,
+      "Receiving objects:  12% (14/110)   \rReceiving objects:  13% (15/110)   \r"
+    ],
+    [
+      5.1e-05,
+      "Receiving objects:  14% (16/110)   \rReceiving objects:  15% (17/110)   \r"
+    ],
+    [
+      2.6e-05,
+      "Receiving objects:  16% (18/110)   \r"
+    ],
+    [
+      0.062742,
+      "Receiving objects:  17% (19/110)   \r"
+    ],
+    [
+      0.039911,
+      "Receiving objects:  18% (20/110)   \r"
+    ],
+    [
+      0.106467,
+      "Receiving objects:  19% (21/110)   \r"
+    ],
+    [
+      0.01991,
+      "Receiving objects:  20% (22/110)   \r"
+    ],
+    [
+      0.080934,
+      "Receiving objects:  21% (24/110)   \r"
+    ],
+    [
+      0.041627,
+      "Receiving objects:  22% (25/110)   \r"
+    ],
+    [
+      0.061255,
+      "Receiving objects:  23% (26/110)   \r"
+    ],
+    [
+      0.042543,
+      "Receiving objects:  24% (27/110)   \r"
+    ],
+    [
+      0.315551,
+      "Receiving objects:  25% (28/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  26% (29/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  27% (30/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  28% (31/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  29% (32/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  30% (33/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  31% (35/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      2.2e-05,
+      "Receiving objects:  32% (36/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  33% (37/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  34% (38/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  35% (39/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  36% (40/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.011617,
+      "Receiving objects:  37% (41/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  38% (42/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.000114,
+      "Receiving objects:  39% (43/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.000144,
+      "Receiving objects:  40% (44/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      6.3e-05,
+      "Receiving objects:  41% (46/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.6e-05,
+      "Receiving objects:  42% (47/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.000376,
+      "Receiving objects:  43% (48/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      5.3e-05,
+      "Receiving objects:  44% (49/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.5e-05,
+      "Receiving objects:  45% (50/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.6e-05,
+      "Receiving objects:  46% (51/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.2e-05,
+      "Receiving objects:  47% (52/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.1e-05,
+      "Receiving objects:  48% (53/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.5e-05,
+      "Receiving objects:  49% (54/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.2e-05,
+      "Receiving objects:  50% (55/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      6.4e-05,
+      "Receiving objects:  51% (57/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.3e-05,
+      "Receiving objects:  52% (58/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      3.3e-05,
+      "Receiving objects:  53% (59/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.000141,
+      "Receiving objects:  54% (60/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      5.2e-05,
+      "Receiving objects:  55% (61/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.000135,
+      "Receiving objects:  56% (62/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.00532,
+      "Receiving objects:  57% (63/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      2e-05,
+      "Receiving objects:  58% (64/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  59% (65/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  60% (66/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.008285,
+      "remote: Total 110 (delta 44), reused 60 (delta 33), pack-reused 34\u001b[K\r\n"
+    ],
+    [
+      0.00018,
+      "Receiving objects:  61% (68/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  62% (69/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  63% (70/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  64% (71/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  65% (72/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  66% (73/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  67% (74/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  68% (75/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.5e-05,
+      "Receiving objects:  69% (76/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      5.2e-05,
+      "Receiving objects:  70% (77/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.8e-05,
+      "Receiving objects:  71% (79/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      4.8e-05,
+      "Receiving objects:  72% (80/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  73% (81/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  74% (82/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      2.8e-05,
+      "Receiving objects:  75% (83/110), 364.00 KiB | 714.00 KiB/s   \r"
+    ],
+    [
+      0.00054,
+      "Receiving objects:  76% (84/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  77% (85/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  78% (86/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  79% (87/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  80% (88/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  81% (90/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  82% (91/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  83% (92/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  84% (93/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  85% (94/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  86% (95/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  87% (96/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  88% (97/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  89% (98/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  90% (99/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  91% (101/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objec"
+    ],
+    [
+      1.7e-05,
+      "ts:  92% (102/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  93% (103/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  94% (104/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  95% (105/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  96% (106/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  97% (107/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  98% (108/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects:  99% (109/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects: 100% (110/110), 364.00 KiB | 714.00 KiB/s   \rReceiving objects: 100% (110/110), 607.35 KiB | 714.00 KiB/s, done.\r\nResolving deltas:   0% (0/52)   \r"
+    ],
+    [
+      0.000253,
+      "Resolving deltas:   3% (2/52)   \r"
+    ],
+    [
+      0.000115,
+      "Resolving deltas:   9% (5/52)   \r"
+    ],
+    [
+      8.4e-05,
+      "Resolving deltas:  13% (7/52)   \r"
+    ],
+    [
+      0.000127,
+      "Resolving deltas:  25% (13/52)   \r"
+    ],
+    [
+      0.000154,
+      "Resolving deltas:  44% (23/52)   \r"
+    ],
+    [
+      0.000348,
+      "Resolving deltas:  61% (32/52)   \r"
+    ],
+    [
+      0.000258,
+      "Resolving deltas:  78% (41/52)   \r"
+    ],
+    [
+      0.00032,
+      "Resolving deltas:  88% (46/52)   \r"
+    ],
+    [
+      0.000451,
+      "Resolving deltas: 100% (52/52)   \r"
+    ],
+    [
+      0.000448,
+      "Resolving deltas: 100% (52/52), done.\r\n"
+    ],
+    [
+      0.184942,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.001141,
+      "$ # make dirlists directory\r\n$ mkdir -p $HOME/dirlists\r\n"
+    ],
+    [
+      0.002408,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ # add `source dirp.bash` to your .bashrc (or equivalent)\r\n$ STRING=$'\\n# dirp (dirs/pushd/popd maganger)\\nsource $HOME/Projects/github/dirp/dirp.bash' && echo \"${STRING}\" >> $HOME/.bashrc && unset STRING\r\n$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000581,
+      "$ "
+    ],
+    [
+      0.001891,
+      "## restart your terminal or source your bash rc\r\n$ source ~/.bashrc\r\n"
+    ],
+    [
+      1.154205,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000339,
+      "$ "
+    ],
+    [
+      0.00119,
+      "##################################################\r\n"
+    ],
+    [
+      7.8e-05,
+      "$ "
+    ],
+    [
+      0.000198,
+      "## first time running dirp + examples of features\r\n"
+    ],
+    [
+      2.2e-05,
+      "$ "
+    ],
+    [
+      0.000133,
+      "##################################################\r\n"
+    ],
+    [
+      2.8e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "# show help\r\n"
+    ],
+    [
+      0.000518,
+      "$ "
+    ],
+    [
+      0.000319,
+      "dirp help"
+    ],
+    [
+      4.1e-05,
+      "\r\n"
+    ],
+    [
+      0.000468,
+      "dirp: A bash script for managing dirs, pushd, and popd across terminals and systems.\r\nProject Page: https://github.com/karlredman/dirp\r\nRequires: Bash >=v4"
+    ],
+    [
+      0.000206,
+      "\r\n"
+    ],
+    [
+      4.1e-05,
+      "Author: Karl N. Redman"
+    ],
+    [
+      0.000215,
+      "\r\nLicense: MIT\r\nCommand Usage:\r\n"
+    ],
+    [
+      0.002676,
+      "   "
+    ],
+    [
+      0.000137,
+      "`dirp [help]`: main menu interface / help with option \\'help\\'\r\n"
+    ],
+    [
+      4.8e-05,
+      "   "
+    ],
+    [
+      5.7e-05,
+      "`dirpp`: choose dirp project\r\n"
+    ],
+    [
+      5.2e-05,
+      "   "
+    ],
+    [
+      5.8e-05,
+      "`dirpl`: list directories in current project\r\n"
+    ],
+    [
+      3.3e-05,
+      "   "
+    ],
+    [
+      0.00015,
+      "`dirpu`: pushd current directory and save to project\r\n"
+    ],
+    [
+      4.2e-05,
+      "   "
+    ],
+    [
+      6.8e-05,
+      "`dirpo <index 1-n>`: popd the index from dirpl\r\n"
+    ],
+    [
+      5.6e-05,
+      "   "
+    ],
+    [
+      0.000116,
+      "`dirpos`: popd the index from selection\r\n"
+    ],
+    [
+      1.1e-05,
+      "   "
+    ],
+    [
+      9.2e-05,
+      "`dirps`: create new project\r\n"
+    ],
+    [
+      0.000105,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000362,
+      "$ "
+    ],
+    [
+      0.000377,
+      "# show directory list -no projects to show yet\r\n"
+    ],
+    [
+      0.000117,
+      "$ "
+    ],
+    [
+      0.000158,
+      "dirpl       # same as alias `d` (can be turned off)\r\n"
+    ],
+    [
+      0.002683,
+      "Error: File /tmp/dirp_latest not found and project argument was not provided.\r\nLoad Project File:\r\n"
+    ],
+    [
+      0.002023,
+      "1) Quit\r\n#? "
+    ],
+    [
+      2.225579,
+      "1"
+    ],
+    [
+      1.401287,
+      "\r\n"
+    ],
+    [
+      0.000264,
+      "Current project: \r\n"
+    ],
+    [
+      0.002459,
+      "\u001b[0m"
+    ],
+    [
+      0.000235,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000204,
+      "$ "
+    ],
+    [
+      0.000578,
+      "# show the main menu and create project Scratch"
+    ],
+    [
+      8.5e-05,
+      "\r\n"
+    ],
+    [
+      0.000293,
+      "$ "
+    ],
+    [
+      0.000616,
+      "dirp        #choose 'create' and add name \"Scratch for this example\""
+    ],
+    [
+      7.4e-05,
+      "\r\n"
+    ],
+    [
+      0.000836,
+      "1) load project\t\t 3) save to project\t 5) list directories\t 7) remove directory\t 9) Help\r\n2) create project\t 4) delete project\t 6) add directory\t 8) show configuration\t10) Quit\r\n#? "
+    ],
+    [
+      3.0,
+      "2"
+    ],
+    [
+      0.536096,
+      "\r\n"
+    ],
+    [
+      0.000118,
+      "New Project Name ([C-c|Enter] to quit): "
+    ],
+    [
+      1.024606,
+      "S"
+    ],
+    [
+      0.192594,
+      "c"
+    ],
+    [
+      0.231376,
+      "r"
+    ],
+    [
+      0.17533,
+      "a"
+    ],
+    [
+      0.217341,
+      "t"
+    ],
+    [
+      0.263757,
+      "c"
+    ],
+    [
+      0.150659,
+      "h"
+    ],
+    [
+      0.547086,
+      "\r\n"
+    ],
+    [
+      0.008054,
+      "rm: cannot remove '/tmp/dirp_latest': No such file or directory\r\n"
+    ],
+    [
+      0.000864,
+      "Created project file /home/karl/dirlists/Scratch\r\n"
+    ],
+    [
+      4.3e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#"
+    ],
+    [
+      0.904823,
+      "\r\n"
+    ],
+    [
+      0.001375,
+      "$ "
+    ],
+    [
+      0.762609,
+      "dirpl       # there are no saved directories yet...\r\n"
+    ],
+    [
+      0.000545,
+      "Current project: Scratch\r\n"
+    ],
+    [
+      0.002762,
+      "\u001b[0m"
+    ],
+    [
+      5.9e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ "
+    ],
+    [
+      0.000344,
+      "# show selection list of projects"
+    ],
+    [
+      0.000157,
+      "\r\n"
+    ],
+    [
+      8.5e-05,
+      "$ "
+    ],
+    [
+      9.3e-05,
+      "dirpp"
+    ],
+    [
+      6.6e-05,
+      "\r\n"
+    ],
+    [
+      0.000138,
+      "Load Project File:"
+    ],
+    [
+      7.2e-05,
+      "\r\n"
+    ],
+    [
+      0.003266,
+      "1) Scratch"
+    ],
+    [
+      8.4e-05,
+      "\r\n"
+    ],
+    [
+      3.7e-05,
+      "2) Quit"
+    ],
+    [
+      6.4e-05,
+      "\r\n"
+    ],
+    [
+      5.5e-05,
+      "#? "
+    ],
+    [
+      2.020101,
+      "1"
+    ],
+    [
+      0.239485,
+      "\r\n"
+    ],
+    [
+      0.001307,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ dirpl\r\n"
+    ],
+    [
+      0.003172,
+      "Current project: Scratch\r\n"
+    ],
+    [
+      0.002387,
+      "\u001b[0m"
+    ],
+    [
+      0.000229,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ # add a directory to project list from `cwd`\r\n$ cd ~/Scratch\r\n$ "
+    ],
+    [
+      3.0,
+      "dirpu\r\n"
+    ],
+    [
+      0.000727,
+      "Do you wish to overwrite /home/karl/dirlists/Scratch?\r\n1) Yes\r\n2) No\r\n#? "
+    ],
+    [
+      3.0,
+      "1"
+    ],
+    [
+      1.120898,
+      "\r\n"
+    ],
+    [
+      0.006787,
+      "Overwrote /home/karl/dirlists/Scratch\r\n"
+    ],
+    [
+      0.001101,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000215,
+      "$ "
+    ],
+    [
+      0.000791,
+      "# add arbitrary directories to the current project\r\n"
+    ],
+    [
+      0.000129,
+      "$ "
+    ],
+    [
+      0.000343,
+      "dirpu $HOME/.config/xfce4/xfconf/xfce-perchannel-xml\r\n"
+    ],
+    [
+      0.000957,
+      "Do you wish to overwrite /home/karl/dirlists/Scratch?\r\n1) Yes\r\n2) No\r\n#? "
+    ],
+    [
+      1.427058,
+      "1"
+    ],
+    [
+      1.335194,
+      "\r\n"
+    ],
+    [
+      0.007856,
+      "Overwrote /home/karl/dirlists/Scratch\r\n"
+    ],
+    [
+      0.001225,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ "
+    ],
+    [
+      0.000686,
+      "dirpu ~/Documents/Repositories/mbin/"
+    ],
+    [
+      0.000326,
+      "\r\n"
+    ],
+    [
+      0.00128,
+      "Do you wish to overwrite /home/karl/dirlists/Scratch?\r\n1) Yes\r\n2) No"
+    ],
+    [
+      0.000282,
+      "\r\n#? "
+    ],
+    [
+      1.14044,
+      "1"
+    ],
+    [
+      0.471679,
+      "\r\n"
+    ],
+    [
+      0.009331,
+      "Overwrote /home/karl/dirlists/Scratch\r\n"
+    ],
+    [
+      0.001014,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.0001,
+      "$ "
+    ],
+    [
+      0.000205,
+      "# manually add *absolute path\" to a project file\r\n"
+    ],
+    [
+      6.3e-05,
+      "$ "
+    ],
+    [
+      0.000248,
+      "echo \"/home/karl/Projects/github/dirp\" >> ~/dirlists/Scratch\r\n"
+    ],
+    [
+      0.000252,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000776,
+      "$ "
+    ],
+    [
+      0.000426,
+      "# show the contents of dirlists / Scratch project\r\n$ ls ~/dirlists\r\n"
+    ],
+    [
+      0.003739,
+      "Scratch\r\n"
+    ],
+    [
+      0.000119,
+      "$ "
+    ],
+    [
+      5.2e-05,
+      "cat ~/dirlists/Scratch\r\n"
+    ],
+    [
+      0.000885,
+      "/home/karl/.config/xfce4/xfconf/xfce-perchannel-xml\r\n/home/karl/Scratch\r\n/home/karl/Documents/Repositories/mbin\r\n/home/karl/Projects/github/dirp\r\n"
+    ],
+    [
+      0.000131,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ "
+    ],
+    [
+      0.000268,
+      "# change directory by alias\r\n"
+    ],
+    [
+      4.8e-05,
+      "$ "
+    ],
+    [
+      2.2e-05,
+      "dirpl\r\n"
+    ],
+    [
+      0.003062,
+      "Current project: Scratch\r\n"
+    ],
+    [
+      0.001182,
+      "\u001b[0;33m 1  ~/Projects/github/dirp"
+    ],
+    [
+      0.000102,
+      "\r\n"
+    ],
+    [
+      0.00016,
+      "\u001b[0;36m 2  ~/Documents/Repositories/mbin\r\n"
+    ],
+    [
+      2e-05,
+      "\u001b[0;33m 3  ~/Scratch\r\n"
+    ],
+    [
+      7.9e-05,
+      "\u001b[0;36m 4  ~/.config/xfce4/xfconf/xfce-perchannel-xml\r\n"
+    ],
+    [
+      1.2e-05,
+      "\u001b[0m"
+    ],
+    [
+      0.000163,
+      "$ "
+    ],
+    [
+      0.000275,
+      "4           # change to ~/.config/xfce4/xfconf/xfce-perchannel-xml\r\n"
+    ],
+    [
+      0.000189,
+      "$ "
+    ],
+    [
+      1.1e-05,
+      "pwd"
+    ],
+    [
+      9.5e-05,
+      "\r\n"
+    ],
+    [
+      6.6e-05,
+      "/home/karl/.config/xfce4/xfconf/xfce-perchannel-xml\r\n"
+    ],
+    [
+      8.2e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ # change to directory via `dirs`\r\n$ cd ~3       # change to ~/Scratch\r\n"
+    ],
+    [
+      0.000631,
+      "$ pwd\r\n/home/karl/Scratch\r\n$ "
+    ],
+    [
+      3.0,
+      "#"
+    ],
+    [
+      3.9e-05,
+      "\r\n"
+    ],
+    [
+      0.000222,
+      "$ "
+    ],
+    [
+      0.000394,
+      "# copy README.md from directory of index 4 to directory of index 1\r\n"
+    ],
+    [
+      8.1e-05,
+      "$ "
+    ],
+    [
+      0.000121,
+      "cp ~1/README.md ~3/\r\n"
+    ],
+    [
+      0.003325,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000222,
+      "$ "
+    ],
+    [
+      0.00024,
+      "# list directory contents of index 3\r\n"
+    ],
+    [
+      0.000136,
+      "$ "
+    ],
+    [
+      4.7e-05,
+      "ls ~3\r\n"
+    ],
+    [
+      0.003827,
+      "README.md\r\n"
+    ],
+    [
+      6.7e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      4.6e-05,
+      "$ "
+    ],
+    [
+      0.0005,
+      "# demonstrate recent project in new shell\r\n"
+    ],
+    [
+      5.8e-05,
+      "$ "
+    ],
+    [
+      3e-05,
+      "bash\r\n"
+    ],
+    [
+      1.169209,
+      "$ dirpl\r\n"
+    ],
+    [
+      0.001727,
+      "Loaded most recent project: Scratch\r\n"
+    ],
+    [
+      0.001129,
+      "Current project: Scratch\r\n"
+    ],
+    [
+      0.000636,
+      "\u001b[0;33m 1  ~/Projects/github/dirp\r\n"
+    ],
+    [
+      8.4e-05,
+      "\u001b[0;36m 2  ~/Documents/Repositories/mbin\r\n\u001b[0;33m 3  ~/Scratch\r\n\u001b[0;36m 4  ~/.config/xfce4/xfconf/xfce-perchannel-xml\r\n\u001b[0m"
+    ],
+    [
+      1.6e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000442,
+      "$ "
+    ],
+    [
+      0.000312,
+      "# add a directory to the project from this shell\r\n"
+    ],
+    [
+      3.9e-05,
+      "$ "
+    ],
+    [
+      0.0002,
+      "dirpu /usr/share/backgrounds\r\n"
+    ],
+    [
+      0.000385,
+      "Do you wish to overwrite /home/karl/dirlists/Scratch?\r\n"
+    ],
+    [
+      1.7e-05,
+      "1) Yes"
+    ],
+    [
+      0.00011,
+      "\r\n"
+    ],
+    [
+      1.5e-05,
+      "2) No\r\n"
+    ],
+    [
+      0.0001,
+      "#? "
+    ],
+    [
+      1.780874,
+      "1"
+    ],
+    [
+      0.655506,
+      "\r\n"
+    ],
+    [
+      0.007747,
+      "Overwrote /home/karl/dirlists/Scratch\r\n"
+    ],
+    [
+      0.002516,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000261,
+      "$ "
+    ],
+    [
+      0.000305,
+      "# exit our sub-shell / terminal, etc.\r\n"
+    ],
+    [
+      0.000423,
+      "$ exit\r\nexit\r\n"
+    ],
+    [
+      0.00142,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n$ "
+    ],
+    [
+      0.000872,
+      "# the project is updated from the other shell"
+    ],
+    [
+      0.000354,
+      "\r\n"
+    ],
+    [
+      0.000188,
+      "$ "
+    ],
+    [
+      0.000113,
+      "dirpl"
+    ],
+    [
+      8.1e-05,
+      "\r\n"
+    ],
+    [
+      0.0028,
+      "Current project: Scratch"
+    ],
+    [
+      5.5e-05,
+      "\r\n"
+    ],
+    [
+      0.002103,
+      "\u001b[0;33m 1  ~/Documents/Repositories/mbin\r\n\u001b[0;36m 2  ~/Projects/github/dirp\r\n"
+    ],
+    [
+      0.000163,
+      "\u001b[0;33m 3  ~/Scratch\r\n\u001b[0;36m 4  ~/.config/xfce4/xfconf/xfce-perchannel-xml\r\n\u001b[0;33m 5  /usr/share/backgrounds\r\n\u001b[0m"
+    ],
+    [
+      2.8e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "#\r\n"
+    ],
+    [
+      0.000165,
+      "$ "
+    ],
+    [
+      0.000273,
+      "# alias `d` is set to dirpl by default\r\n"
+    ],
+    [
+      0.000105,
+      "$ d\r\n"
+    ],
+    [
+      0.003854,
+      "Current project: Scratch\r\n"
+    ],
+    [
+      0.001384,
+      "\u001b[0;33m 1  ~/Documents/Repositories/mbin\r\n\u001b[0;36m 2  ~/Projects/github/dirp\r\n"
+    ],
+    [
+      2e-05,
+      "\u001b[0;33m 3  ~/Scratch\r\n\u001b[0;36m 4  ~/.config/xfce4/xfconf/xfce-perchannel-xml\r\n\u001b[0;33m 5  /usr/share/backgrounds\r\n\u001b[0m"
+    ],
+    [
+      8.4e-05,
+      "$ "
+    ],
+    [
+      3.0,
+      "############################\r\n"
+    ],
+    [
+      0.000178,
+      "$ "
+    ],
+    [
+      0.000128,
+      "## THANKS FOR WATCHING !!!!\r\n"
+    ],
+    [
+      3.8e-05,
+      "$ "
+    ],
+    [
+      0.000201,
+      "############################\r\n"
+    ],
+    [
+      2.6e-05,
+      "$ "
+    ]
+  ],
+  "version": 1,
+  "duration": 120.609372,
+  "height": 24,
+  "width": 80
+}

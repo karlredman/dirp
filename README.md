@@ -28,8 +28,11 @@ See the same list of features with examples [here](https://github.com/karlredman
 	* see the wiki page: [Home · karlredman/dirp Wiki](https://github.com/karlredman/dirp/wiki)
 
 
-## Screenshots:
+## Screenshot:
 ![dirp animated gif](https://github.com/karlredman/dirp/blob/master/docs/screenshot.gif?raw=true "dirp Screenshot")
+
+## asciinema: Installation and Demo (2 min)
+[![asciicast](https://asciinema.org/a/jmH6bzcn0XMFPt8qPVMuvE3gr.png)](https://asciinema.org/a/jmH6bzcn0XMFPt8qPVMuvE3gr?autoplay=1)
 
 ## Installation:
 See configuration for more details -here's the quick setup/default stuff
@@ -57,7 +60,7 @@ source file_path/dirp.bash
 
 4. (optionally) Change configurables as needed/desired (see 'Configuration' below)
 
-5. start a new terminal or source your `bashrc`
+5. start a new terminal or source your `.bashrc`
 ```
 source ~/.bashrc
 ```
