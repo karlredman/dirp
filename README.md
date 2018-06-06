@@ -75,7 +75,6 @@ source ~/.bashrc
 | d               | (alias enabled by default) same as dirpl      |
 | dirpu           | `pushd` current directory and save to project |
 | dirpo \<index\> | `popd` the index from dirpl                   |
-| dirpos          | `popd` the index from selection               |
 | dirps           | save current list to selected project         |
 
 ### `dirp` Menu Reference:
