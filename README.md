@@ -153,6 +153,7 @@ Here's some references that might help out if you want to play around with color
 * [Shell Colors: colorizing shell scripts ~ Bash Shell Scripting by Examples](http://www.bashguru.com/2010/01/shell-colors-colorizing-shell-scripts.html)
 
 ## Contributing:
+
 Please read: [dirp/CONTRIBUTING.md at master · karlredman/dirp](https://github.com/karlredman/dirp/blob/master/CONTRIBUTING.md)
 
 ## License:
