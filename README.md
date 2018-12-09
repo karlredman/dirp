@@ -156,4 +156,5 @@ Here's some references that might help out if you want to play around with color
 Please read: [dirp/CONTRIBUTING.md at master · karlredman/dirp](https://github.com/karlredman/dirp/blob/master/CONTRIBUTING.md)
 
 ## License:
+
 This project is hereby copy written by Karl N. Redman (November 29, 2017). Any use of this intellectual property is permitted insofar as such usage conforms to the MIT license included within the project. All rights reserved. Please refer to: [dirp/LICENSE at master · karlredman/dirp](https://github.com/karlredman/dirp/blob/master/LICENSE)
