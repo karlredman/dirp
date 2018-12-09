@@ -30,12 +30,15 @@ See the same list of features with examples [here](https://github.com/karlredman
 
 
 ## Screenshot:
+
 ![dirp animated gif](https://github.com/karlredman/dirp/blob/master/docs/screenshot.gif?raw=true "dirp Screenshot")
 
 ## asciinema: Installation and Demo (2 min)
+
 [![asciicast](https://asciinema.org/a/jmH6bzcn0XMFPt8qPVMuvE3gr.png)](https://asciinema.org/a/jmH6bzcn0XMFPt8qPVMuvE3gr?autoplay=1)
 
 ## Installation:
+
 See configuration for more details -here's the quick setup/default stuff
 
 Note: It is imperative that this operates via `source <file path>/dirp.bash` from your `.bashrc` (or equivalent). The reason for this is that `dirp`, `pushd`, and `popd` are very strictly "shell scoped". This is one of the main reasons people have so many questions about these utilities, why these utilities are so terribly underused, and why many programmers and admins seek other utilities.
@@ -100,6 +103,7 @@ source ~/.bashrc
 The extended Configuration information below provides information for fine tuning and customization and overriding defaults.
 
 #### Configuration Variables:
+
 * DIRP_LATEST_FILE
     * absolute path of file containing the name of the latest project managed by dirp
     * if set to 'NONE' then dirp_auto returns without reading a file. i.e. no questions or loading of previous project.
