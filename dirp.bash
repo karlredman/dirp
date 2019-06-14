@@ -14,10 +14,11 @@
 ## defined before this file is sourced.
 ############################################
 
-if [ -z ${DIRP_LATEST_FILE+notArealVariable} ];then
+if [ -z ${DIRP_LATEST_FILE+notArealVariable} ] || [ ${DIRP_LATEST_FILE} = "NONE" ];then
+    # TODO: figure out why this gets set to NONE
 	DIRP_LATEST_FILE="/tmp/dirp_latest"
 fi
-
+#
 if [ -z ${DIRP_PROJECTS_DIR+notArealVariable} ];then
 	DIRP_PROJECTS_DIR="$HOME/dirlists"
 fi
